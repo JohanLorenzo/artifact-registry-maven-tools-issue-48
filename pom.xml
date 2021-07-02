@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>some.groupId</groupId>
+    <artifactId>some.artifactId</artifactId>
+    <version>1.0.0</version>
+
+    <distributionManagement>
+        <repository>
+            <id>artifact-registry</id>
+            <url>artifactregistry://europe-west1-maven.pkg.dev/malt-build/artifact-registry-maven-tools-issue-48</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>artifact-registry</id>
+            <url>artifactregistry://europe-west1-maven.pkg.dev/malt-build/artifact-registry-maven-tools-issue-48</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>some.groupId</groupId>
+                <artifactId>jetty-jspc-maven-plugin</artifactId>
+                <version>10.0.5</version>
+                <executions>
+                    <execution>
+                        <id>jspc</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jspc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <extensions>
+            <extension>
+                <groupId>com.google.cloud.artifactregistry</groupId>
+                <artifactId>artifactregistry-maven-wagon</artifactId>
+                <version>2.1.1</version>
+            </extension>
+        </extensions>
+    </build>
+</project>
